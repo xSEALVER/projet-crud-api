@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 const Reservation = () => {
     const [reservations, setReservations] = useState([]);
@@ -29,6 +30,10 @@ const Reservation = () => {
         setSelectedReservation(null);
     };
 
+    const sanitize = (data) => {
+        return DOMPurify.sanitize(data);
+    };
+
     return (
         <div className='d-flex flex-column vh-100 bg-dark justify-content-center align-items-center'>
             {!selectedReservation ? (
@@ -48,12 +53,12 @@ const Reservation = () => {
                            {
                                reservations.map((data, i) => (
                                    <tr key={i}>
-                                       <td>{data.ID}</td>
-                                       <td>{data.Name}</td>
-                                       <td>{data.Email}</td>
+                                       <td>{sanitize(data.ID)}</td>
+                                       <td>{sanitize(data.Name)}</td>
+                                       <td>{sanitize(data.Email)}</td>
                                        <td>
                                            <button className='btn btn-warning me-2' onClick={() => handleEdit(data)}>Lire</button>
-                                           <Link to={`/update/${data.ID}`} className='btn btn-primary me-2'>Mettre à jour</Link>
+                                           <Link to={`/update/${sanitize(data.ID)}`} className='btn btn-primary me-2'>Mettre à jour</Link>
                                            <button className='btn btn-danger' onClick={() => handleDelete(data.ID)}>Effacer</button>
                                        </td>
                                    </tr>
@@ -79,9 +84,9 @@ const Reservation = () => {
             </thead>
             <tbody>
                 <tr>
-                    <td>{selectedReservation.ID}</td>
-                    <td>{selectedReservation.Name}</td>
-                    <td>{selectedReservation.Email}</td>
+                    <td>{sanitize(selectedReservation.ID)}</td>
+                    <td>{sanitize(selectedReservation.Name)}</td>
+                    <td>{sanitize(selectedReservation.Email)}</td>
                     <td className='text-center'>
                         <button className='btn btn-primary' onClick={handleClose}>Retour</button>
                     </td>

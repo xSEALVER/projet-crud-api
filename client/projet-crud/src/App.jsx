@@ -6,6 +6,7 @@ import Reservation from './components/Reservation';
 import UpdateReservation from './components/UpdateRservation';
 import CreateReservation from './components/CreateReservation';
 import SigninComposants from './components/SigninComposants';
+import Blankpage from './components/Blankpage';
 
 
 
@@ -18,8 +19,9 @@ function App() {
                     
             <Routes>
 
-                      <Route path='/' element={<SigninComposants />} />
-                      <Route path='/reservation' element={<Reservation />} />
+                      {/* <Route path='/' element={<Blankpage />} />
+                      <Route path='/signin' element={<SigninComposants />} /> */}
+                      <Route path='/' element={<Reservation />} />
                       <Route path='/create' element={<CreateReservation />} />
                       <Route path='/update/:id' element={<UpdateReservation />} />
               

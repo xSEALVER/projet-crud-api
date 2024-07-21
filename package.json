@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "react-bootstrap": "^2.10.4"
+    "dompurify": "^3.1.6",
+    "express-rate-limit": "^7.3.1",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "react-bootstrap": "^2.10.4",
+    "xss-clean": "^0.1.4"
   }
 }
