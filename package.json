@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "csurf": "^1.11.0",
     "dompurify": "^3.1.6",
     "express-rate-limit": "^7.3.1",
     "express-validator": "^7.1.0",
